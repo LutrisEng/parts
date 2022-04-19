@@ -17,8 +17,11 @@
     "@yarnpkg/esbuild-plugin-pnp": "^3.0.0-rc.2",
     "@yarnpkg/sdks": "^3.0.0-rc.2",
     "esbuild": "^0.14.36",
+    "marked": "^4.0.14",
     "node-fetch": "^3.2.3",
     "prettier": "^2.6.2",
+    "spdx-expression-parse": "^3.0.1",
+    "spdx-license-data": "^1.7.0",
     "wrangler": "beta",
     "yaml": "^2.0.1"
   },
@@ -26,9 +29,6 @@
     "proseWrap": "always"
   },
   "dependencies": {
-    "@ungap/structured-clone": "^0.3.4",
-    "marked": "^4.0.14",
-    "spdx-expression-parse": "^3.0.1",
-    "spdx-license-data": "^1.7.0"
+    "@ungap/structured-clone": "^0.3.4"
   }
 }

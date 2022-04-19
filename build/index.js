@@ -4,6 +4,9 @@ import { basename, join } from "path";
 import { parse } from "yaml";
 import { build } from "esbuild";
 import { pnpPlugin } from "@yarnpkg/esbuild-plugin-pnp";
+import spdxLicenses from "spdx-license-data";
+import spdxParse from "spdx-expression-parse";
+import { marked } from "marked";
 
 async function entryType(entry) {
   const stats = await stat(entry);
@@ -31,6 +34,20 @@ function partNameToNumber(parent, name) {
     return prefix + name;
   }
 }
+
+function allReferencedLicenses(spdxTree) {
+  if (spdxTree.license) {
+    return [spdxTree.license];
+  } else {
+    return [
+      ...allReferencedLicenses(spdxTree.left),
+      ...allReferencedLicenses(spdxTree.right),
+    ];
+  }
+}
+
+const seenLicenses = {};
+const seenParts = [];
 
 async function readProject(path, parent = null) {
   const entries = await readdir(path);
@@ -63,9 +80,20 @@ async function readProject(path, parent = null) {
                   file.url += `?filename=${encodeURIComponent(file.filename)}`;
                 }
               }
+              if (file.license) {
+                file.licenses = allReferencedLicenses(spdxParse(file.license));
+                for (const license of file.licenses) {
+                  if (!seenLicenses[license]) {
+                    seenLicenses[license] = spdxLicenses.find(
+                      (info) => info.id === license
+                    ).text;
+                  }
+                }
+              }
             }
           }
           project.partList.push(part);
+          seenParts.push(part);
           break;
         case "readme":
           project.readme = (await readFile(fullEntry)).toString("utf-8");
@@ -83,6 +111,9 @@ async function readProject(path, parent = null) {
       }
     })
   );
+  if (project.readme) {
+    project.readmeHTML = marked.parse(project.readme);
+  }
   const parts = [];
   for (const part of project.partList) {
     parts[part.partNumber] = part;
@@ -91,6 +122,12 @@ async function readProject(path, parent = null) {
     parts[partNumber].readme = readme;
   }
   return project;
+}
+
+for (const part of seenParts) {
+  if (part.readme) {
+    part.readmeHTML = marked.parse(part.readme);
+  }
 }
 
 const projectEntries = await readdir("./projects");
@@ -110,7 +147,11 @@ const vendors = await Promise.all(
   vendorEntries.map((entry) => readVendor(join("./vendors", entry)))
 );
 
-const json = JSON.stringify({ projects, vendors }, null, 2);
+const json = JSON.stringify(
+  { projects, vendors, licenses: seenLicenses },
+  null,
+  2
+);
 await writeFile("dist.json", json);
 await writeFile("dist.js", `export default ${json};`);
 try {

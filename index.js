@@ -1,10 +1,7 @@
 import rawData from "./dist.js";
-import spdxLicenses from "spdx-license-data";
-import spdxParse from "spdx-expression-parse";
-import { marked } from "marked";
 import structuredClone from "@ungap/structured-clone";
 
-const { projects: rawProjects, vendors: rawVendors } = rawData;
+const { projects: rawProjects, vendors: rawVendors, licenses } = rawData;
 
 function addRaw(obj) {
   obj.raw = structuredClone(obj);
@@ -24,9 +21,6 @@ function denormalizeProject(project) {
   }
   projectList.push(project);
   partList.push(...project.partList);
-  if (project.readme) {
-    project.readmeHTML = marked.parse(project.readme);
-  }
 }
 
 function resolveVendor(id) {
@@ -54,9 +48,6 @@ function denormalizePart(part) {
     part.vendorID = part.vendor;
     part.vendor = resolveVendor(part.vendorID);
   }
-  if (part.readme) {
-    part.readmeHTML = marked.parse(part.readme);
-  }
 }
 
 const partReferences = [["manufacturing", "material"]];
@@ -78,29 +69,17 @@ function denormalizePartPass2(part) {
   }
 }
 
-function allReferencedLicenses(spdxTree) {
-  if (spdxTree.license) {
-    return [spdxTree.license];
-  } else {
-    return [
-      ...allReferencedLicenses(spdxTree.left),
-      ...allReferencedLicenses(spdxTree.right),
-    ];
-  }
-}
-
 function denormalizeFile(file) {
   if (file.license) {
     Object.defineProperty(file, "licenseText", {
       get() {
-        const licenses = allReferencedLicenses(spdxParse(file.license));
         let licenseText = "LICENSES\n";
-        for (const license of licenses) {
-          const licenseInfo = spdxLicenses.find((info) => info.id === license);
-          if (licenseInfo) {
+        for (const license of file.licenses) {
+          const text = licenses[license];
+          if (text) {
             licenseText += `---
     ${license}
-    ${licenseInfo.text}`;
+    ${text}`;
           } else {
             licenseText += `---
     Couldn't find license text for ${license}
