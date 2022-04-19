@@ -1,0 +1,10 @@
+name = "parts"
+account_id = "5a01620085c303479c1f5e6770a1a133"
+compatibility_date = "2022-04-19"
+main = "./worker.dist.js"
+
+[site]
+bucket = "./public"
+
+[build]
+command = "yarn build"

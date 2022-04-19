@@ -1,0 +1,24 @@
+name: Cube
+type: part
+dimensions:
+  width: 1cm
+  length: 1cm
+  height: 1cm
+  mass: 1.25g
+manufacturing:
+  type: fused deposition modeling
+  material: LUTRIS.FAB.FDM.PRUSA.PLA.GALAXYBLACK
+ordering: on demand
+files:
+  - filename: LUTRIS.FAB.0.stl
+    description: STL for FDM
+    ipfs: QmQ7MKL5VBqyztYqRKHZEhmEGaPp5yvDn7Z3xZY9M9Ux1W
+    license: CC0-1.0
+  - filename: LUTRIS.FAB.0.3mf
+    description: 3MF for PrusaSlicer
+    ipfs: QmXjpSc7y4RfBr8MdwuZVBQNXS3t9syZH3YzKzKPWozf6C
+    license: CC0-1.0
+  - filename: LUTRIS.FAB.0_0.25mm_PLA_MINI_7m.gcode
+    description: GCODE for printing on Prusa Mini with Prusament PLA
+    ipfs: QmP8SZEoq8hGHwU2LQdqm37EWRN8zu8kS25xRLt6R8Xo7L
+    license: CC0-1.0

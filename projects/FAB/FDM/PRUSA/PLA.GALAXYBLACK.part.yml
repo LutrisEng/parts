@@ -1,0 +1,13 @@
+name: Prusament PLA Prusa Galaxy Black 1kg
+type: material
+material_class: plastic
+material_type: polylactic acid
+dimensions:
+  mass: 1kg
+  filament_diameter: 1.75mm
+packaging: spool
+vendor: prusa
+ordering:
+  type: from vendor
+  url: https://www.prusa3d.com/product/prusament-pla-prusa-galaxy-black-1kg/
+  price: 29.99 USD
