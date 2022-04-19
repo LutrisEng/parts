@@ -78,12 +78,12 @@ function denormalizeFile(file) {
           const text = licenses[license];
           if (text) {
             licenseText += `---
-    ${license}
-    ${text}`;
+${license}
+${text}`;
           } else {
             licenseText += `---
-    Couldn't find license text for ${license}
-    `;
+Couldn't find license text for ${license}
+`;
           }
         }
         return licenseText;
