@@ -1,0 +1,7 @@
+name: Prusa Mini+
+type: tool
+vendor: prusa
+ordering:
+  type: from vendor
+  url: https://www.prusa3d.com/product/original-prusa-mini-semi-assembled-3d-printer-4/
+  price: 399 USD
