@@ -8,6 +8,15 @@ import spdxLicenses from "spdx-license-data";
 import spdxParse from "spdx-expression-parse";
 import { marked } from "marked";
 
+function escape(unsafe) {
+  return unsafe
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
 async function entryType(entry) {
   const stats = await stat(entry);
   if (stats.isDirectory()) {
@@ -167,7 +176,9 @@ await mkdir("public", { recursive: true });
 await writeFile("public/parts.json", json);
 await writeFile(
   "public/index.html",
-  `<html><body><h1><code>import * from "https://parts.lutris.engineering/parts.js";</code></h1><pre><code>${json}</code></pre><script type="module">import * as parts from "./parts.js"; for (const [k, v] of Object.entries(parts)) window[k] = v</script></body></html>`
+  `<html><body><h1><code>import * from "https://parts.lutris.engineering/parts.js";</code></h1><pre><code>${escape(
+    json
+  )}</code></pre><script type="module">import * as parts from "./parts.js"; for (const [k, v] of Object.entries(parts)) window[k] = v</script></body></html>`
 );
 await build({
   entryPoints: ["worker.js"],
