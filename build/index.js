@@ -124,16 +124,16 @@ async function readProject(path, parent = null) {
   return project;
 }
 
+const projectEntries = await readdir("./projects");
+const projects = await Promise.all(
+  projectEntries.map((entry) => readProject(join("./projects", entry)))
+);
+
 for (const part of seenParts) {
   if (part.readme) {
     part.readmeHTML = marked.parse(part.readme);
   }
 }
-
-const projectEntries = await readdir("./projects");
-const projects = await Promise.all(
-  projectEntries.map((entry) => readProject(join("./projects", entry)))
-);
 
 async function readVendor(path) {
   return {
