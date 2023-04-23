@@ -47,7 +47,7 @@ __metadata:
     "@yarnpkg/sdks": ^3.0.0-rc.2
     esbuild: ^0.14.36
     marked: ^4.0.14
-    node-fetch: ^3.2.3
+    node-fetch: ^3.2.10
     prettier: ^2.6.2
     spdx-expression-parse: ^3.0.1
     spdx-license-data: ^1.7.0
@@ -2032,14 +2032,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-fetch@npm:^3.2.3":
-  version: 3.2.3
-  resolution: "node-fetch@npm:3.2.3"
+"node-fetch@npm:^3.2.10":
+  version: 3.3.1
+  resolution: "node-fetch@npm:3.3.1"
   dependencies:
     data-uri-to-buffer: ^4.0.0
     fetch-blob: ^3.1.4
     formdata-polyfill: ^4.0.10
-  checksum: 6f702b2683d6e1c097e99888bedaac4625d6895f2a8a60573a2bc04916f5577ea61d274f26e308c08cfb724b23d45de7d3514c14b59e0293e9809c66c88ac12c
+  checksum: 62145fd3ba4770a76110bc31fdc0054ab2f5442b5ce96e9c4b39fc9e94a3d305560eec76e1165d9259eab866e02a8eecf9301062bb5dfc9f08a4d08b69d223dd
   languageName: node
   linkType: hard
 

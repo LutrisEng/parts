@@ -39,7 +39,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@yarnpkg/sdks", "npm:3.0.0-rc.2"],\
             ["esbuild", "npm:0.14.36"],\
             ["marked", "npm:4.0.14"],\
-            ["node-fetch", "npm:3.2.3"],\
+            ["node-fetch", "npm:3.3.1"],\
             ["prettier", "npm:2.6.2"],\
             ["spdx-expression-parse", "npm:3.0.1"],\
             ["spdx-license-data", "npm:1.7.0"],\
@@ -98,7 +98,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@yarnpkg/sdks", "npm:3.0.0-rc.2"],\
             ["esbuild", "npm:0.14.36"],\
             ["marked", "npm:4.0.14"],\
-            ["node-fetch", "npm:3.2.3"],\
+            ["node-fetch", "npm:3.3.1"],\
             ["prettier", "npm:2.6.2"],\
             ["spdx-expression-parse", "npm:3.0.1"],\
             ["spdx-license-data", "npm:1.7.0"],\
@@ -2275,10 +2275,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["node-fetch", [\
-        ["npm:3.2.3", {\
-          "packageLocation": "./.yarn/cache/node-fetch-npm-3.2.3-0f62fc8780-6f702b2683.zip/node_modules/node-fetch/",\
+        ["npm:3.3.1", {\
+          "packageLocation": "./.yarn/cache/node-fetch-npm-3.3.1-576511fc5a-62145fd3ba.zip/node_modules/node-fetch/",\
           "packageDependencies": [\
-            ["node-fetch", "npm:3.2.3"],\
+            ["node-fetch", "npm:3.3.1"],\
             ["data-uri-to-buffer", "npm:4.0.0"],\
             ["fetch-blob", "npm:3.1.5"],\
             ["formdata-polyfill", "npm:4.0.10"]\
