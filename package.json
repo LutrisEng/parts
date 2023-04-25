@@ -23,7 +23,7 @@
     "spdx-expression-parse": "^3.0.1",
     "spdx-license-data": "^1.7.0",
     "wrangler": "beta",
-    "yaml": "^2.0.1"
+    "yaml": "^2.2.2"
   },
   "prettier": {
     "proseWrap": "always"

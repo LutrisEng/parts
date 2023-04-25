@@ -44,7 +44,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["spdx-expression-parse", "npm:3.0.1"],\
             ["spdx-license-data", "npm:1.7.0"],\
             ["wrangler", "npm:0.0.26"],\
-            ["yaml", "npm:2.0.1"]\
+            ["yaml", "npm:2.2.2"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -103,7 +103,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["spdx-expression-parse", "npm:3.0.1"],\
             ["spdx-license-data", "npm:1.7.0"],\
             ["wrangler", "npm:0.0.26"],\
-            ["yaml", "npm:2.0.1"]\
+            ["yaml", "npm:2.2.2"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -3066,10 +3066,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["yaml", [\
-        ["npm:2.0.1", {\
-          "packageLocation": "./.yarn/cache/yaml-npm-2.0.1-92722db385-23f95ff0d6.zip/node_modules/yaml/",\
+        ["npm:2.2.2", {\
+          "packageLocation": "./.yarn/cache/yaml-npm-2.2.2-6e3cddb343-d90c235e09.zip/node_modules/yaml/",\
           "packageDependencies": [\
-            ["yaml", "npm:2.0.1"]\
+            ["yaml", "npm:2.2.2"]\
           ],\
           "linkType": "HARD"\
         }]\
